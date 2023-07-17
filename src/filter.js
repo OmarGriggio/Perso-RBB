@@ -2,9 +2,9 @@ export function isEmpty(obj) {
   if (
     obj.name === "" ||
     obj.surname === "" ||
-    obj.age === "" ||
-    obj.genre === "" ||
-    obj.category === ""
+    obj.birthday === "" ||
+    obj.address.street === "" ||
+    obj.address.zip === ""
   ) {
     return true;
   } else {
@@ -12,7 +12,7 @@ export function isEmpty(obj) {
   }
 }
 export function ageControl(player) {
-  if (player.age < 10 || player.age > 100) {
+  if (player.age < 10 || player.age > 60) {
     return true;
   } else {
     return false;
@@ -24,20 +24,10 @@ export function playerAlreadyExist(player, players) {
     if (
       player.name == players[index].name &&
       player.surname == players[index].surname &&
-      player.age == players[index].age
+      player.birthday == players[index].birthday
     ) {
       exist = true;
     }
   }
   return exist;
-}
-export function playerAlreadyInTeam(player, players) {
-  return playerAlreadyExist(player, players);
-}
-export function sexControle(team, player) {
-  if (team.genre == player.genre) {
-    return true;
-  } else {
-    return false;
-  }
 }

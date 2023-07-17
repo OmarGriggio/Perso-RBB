@@ -3,9 +3,6 @@
     <div class="playerInput">
       <Input-Add-Player @add="addPlayer($event)"></Input-Add-Player>
     </div>
-    <div class="showList">
-      <ShowPlayersTeams></ShowPlayersTeams>
-    </div>
     <div class="importAPI">
       <button v-on:click="loadAPI()">Charger API</button>
       <li v-for="player in players" v-bind:key="player.id">player loaded</li>
@@ -51,9 +48,14 @@ export default {
         this.$root.players.push(player);
       }
     },
-    addPlayer: function (player) {
-      this.$root.players.push(player);
-      this.$root.savePlayer();
+    async addPlayer(player) {
+      var test = JSON.parse(player);
+      console.log(test)
+      const result = await axios.post(
+        "https://script.google.com/macros/library/d/16iwDGMUioocCGcsEnDZguAAptNJ8vkbEEJwKySGQqrdoKF7V9sP6HbmS/5"
+        ,test
+      );
+      console.log(result.data);
     },
   },
 };

@@ -27,71 +27,76 @@
         />
       </div>
     </div>
-    <div class="container col-lg-4">
-      <label for="age">Age:</label>
-      <input
-        class="form-control"
-        v-model.number="player.age"
-        type="number"
-        id="age"
-      />
+    <div class="name">
+      <div class="container col-lg-4">
+        <label for="name">Date de naissance:</label><br />
+        <input v-model="player.birthday" type="date" id="name" />
+      </div>
     </div>
     <div class="container col-lg-4">
-      <label for="category"
-        >Catégorie :
-        <select class="form-select" v-model="player.category" name="categorie">
-          <option value="U14">U14</option>
-          <option value="U16">U16</option>
-          <option value="U18">U18</option>
-          <option value="U20">U20</option>
-          <option value="1LN">1LN</option>
-        </select>
-      </label>
-    </div>
-    <div class="container col-lg-4">
-      <label class="form-check-label"
-        ><input
-          class="form-check-input"
-          v-model="player.genre"
-          type="radio"
-          name="sexe"
-          value="Homme"
+      <div class="surname">
+        <label for="surname">Adresse:</label>
+        <input
+          class="form-control"
+          v-model="player.address.street"
+          type="text"
+          id="surname"
         />
-        Homme
-      </label>
-      <br />
-      <label class="form-check-label"
-        ><input
-          class="form-check-input"
-          v-model="player.genre"
-          type="radio"
-          name="sexe"
-          value="Femme"
-        />
-        Femme
-      </label>
+      </div>
     </div>
     <div class="container col-lg-4">
-      <label>
-        Poste :
-        <select class="form-select" v-model="player.poste" name="poste">
-          <option value="Meneur">Meneur</option>
-          <option value="Ailier">Ailier</option>
-          <option value="Ailier fort">Ailier fort</option>
-          <option value="Arriere">Arrière</option>
-          <option value="Pivot">Pivot</option>
-        </select>
-      </label>
+      <div class="surname">
+        <label for="surname">Code Postal:</label>
+        <input
+          class="form-control"
+          v-model="player.address.zip"
+          type="text"
+          id="surname"
+        />
+      </div>
+    </div>
+    <div class="container col-lg-4">
+      <div class="surname">
+        <label for="surname">Ville :</label>
+        <input
+          class="form-control"
+          v-model="player.address.city"
+          type="text"
+          id="surname"
+        />
+      </div>
+    </div>
+    <div class="container col-lg-4">
+      <div class="surname">
+        <label for="surname">téléphone :</label>
+        <input
+          class="form-control"
+          v-model="player.phone"
+          type="text"
+          id="surname"
+        />
+      </div>
+    </div>
+    <div class="container col-lg-4">
+      <div class="surname">
+        <label for="surname">mail :</label>
+        <input
+          class="form-control"
+          v-model="player.mail"
+          type="text"
+          id="surname"
+        />
+      </div>
     </div>
     <div class="errMessage">
       <p v-if="errEmpty">Remplissez toutes les cases !</p>
       <p v-if="errAge">Age saisi incorrect !</p>
-      <p v-if="playerAlreadyExist">Ce joueur existe déja</p>
+      <p v-if="playerAlreadyExist">Ce joueur existe déjà !</p>
     </div>
     <span class="container">
       <div class="container col-lg-4">
         <button class="btn btn-success" v-on:click="addPlayer()">
-          Ajouter un joueur
+          Enregistrer
         </button>
       </div>
     </span>
@@ -107,23 +112,21 @@ export default {
   emits: ["add"],
   data() {
     return {
-      form: {
-        avatar: null,
-      },
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png",
       errEmpty: false,
       errAge: false,
       playerAlreadyExist: false,
       player: {
         name: "",
         surname: "",
-        age: 0,
-        category: "",
-        genre: "",
-        poste: "",
-        image: this.avatar,
-        hasTeam: false,
-        showTeam: false,
+        birthday: Date,
+        address: {
+          street: "",
+          zip: 0,
+          city: "",
+        },
+        mail: "",
+        phone: 0,
+        sexe: "M",
       },
     };
   },
@@ -133,13 +136,16 @@ export default {
         id: nanoid(),
         name: this.player.name,
         surname: this.player.surname,
-        age: this.player.age,
-        category: this.player.category,
-        genre: this.player.genre,
-        poste: this.player.poste,
-        hasTeam: this.player.hasTeam,
-        showTeam: this.player.showTeam,
-        src: this.src,
+        birthday: this.player.birthday,
+        address: {
+          street: this.player.address.street,
+          zip: this.player.address.zip,
+          city: this.player.address.city,
+        },
+        mail: this.player.mail,
+        phone: this.player.phone,
+        sexe: this.player.sexe,
+
       };
       if (!isEmpty(player)) {
         this.errEmpty = false;
