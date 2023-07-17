@@ -83,12 +83,6 @@
         </select>
       </label>
     </div>
-    <div class="container col-lg-4">
-      <avatar-input
-        v-model="form.avatar"
-        @src="this.src = $event"
-      ></avatar-input>
-    </div>
     <div class="errMessage">
       <p v-if="errEmpty">Remplissez toutes les cases !</p>
       <p v-if="errAge">Age saisi incorrect !</p>
@@ -108,12 +102,9 @@ import { isEmpty } from "../filter.js";
 import { ageControl } from "../filter.js";
 import { playerAlreadyExist } from "../filter.js";
 import { nanoid } from "nanoid";
-import AvatarInput from "../components/AvatarInput.vue";
+
 export default {
   emits: ["add"],
-  components: {
-    "avatar-input": AvatarInput,
-  },
   data() {
     return {
       form: {

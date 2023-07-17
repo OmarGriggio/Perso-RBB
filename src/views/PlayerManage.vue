@@ -14,7 +14,6 @@
   </div>
 </template>
 <script>
-import ShowPlayersTeams from "../components/ShowPlayersTeams.vue";
 import InputAddPlayer from "../components/InputAddPlayer.vue";
 import axios from "axios";
 import { nanoid } from "nanoid";
@@ -22,7 +21,6 @@ import { nanoid } from "nanoid";
 export default {
   components: {
     "Input-Add-Player": InputAddPlayer,
-    ShowPlayersTeams: ShowPlayersTeams,
   },
   data() {
     return {

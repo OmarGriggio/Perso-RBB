@@ -15,16 +15,6 @@ const router = createRouter({
       name: "playerManage",
       component: () => import("../views/PlayerManage.vue"),
     },
-    {
-      path: "/about",
-      name: "about",
-      component: () => import("../views/AboutMe.vue"),
-    },
-    {
-      path: "/TeamManage",
-      name: "TeamManage",
-      component: () => import("../views/TeamManage.vue"),
-    },
   ],
 });
 

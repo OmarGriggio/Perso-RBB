@@ -24,9 +24,6 @@ export default {
               alt="Lakers"
               id="carousel_img"
             />
-            <div class="carousel-caption d-none d-md-block">
-              <h1>Créez vos joueurs et gérez vos équipes</h1>
-            </div>
           </div>
           <div class="carousel-item">
             <img
