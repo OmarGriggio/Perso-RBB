@@ -27,7 +27,7 @@ export default {
   methods: {
     async loadAPI() {
       const resultat = await axios.get(
-        "https://script.google.com/macros/library/d/16iwDGMUioocCGcsEnDZguAAptNJ8vkbEEJwKySGQqrdoKF7V9sP6HbmS/5"
+        "https://script.google.com/macros/s/AKfycbyeQvkIO-7jrD4cH4STE2bze_sRCbnntdRuX9YSYjyLN1m9J6pIdmC8-84vDVEWUNU0/exec"
       );
       this.players = resultat.data;
     },
@@ -49,13 +49,21 @@ export default {
       }
     },
     async addPlayer(player) {
-      var test = JSON.parse(player);
-      console.log(test)
+      const player1 = {
+        name: "",
+        address: {
+          zip: 0,
+        },
+      };
+      player1.name = player.name;
+      player1.address.zip = player.address.zip;
+      var data = { data: JSON.stringify(player1) };
+      console.log(data);
       const result = await axios.post(
-        "https://script.google.com/macros/library/d/16iwDGMUioocCGcsEnDZguAAptNJ8vkbEEJwKySGQqrdoKF7V9sP6HbmS/5"
-        ,test
+        "https://script.google.com/macros/s/AKfycbyacod1x1Gx6hnYAjM0r_crsmqEUyojE2YPdrBvcfmJgvl0SC3BZtTGKzr2rQ1_NOiu/exec",
+        data
       );
-      console.log(result.data);
+      console.log(result.data.id);
     },
   },
 };

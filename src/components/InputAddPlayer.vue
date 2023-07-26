@@ -103,9 +103,9 @@
   </div>
 </template>
 <script>
-import { isEmpty } from "../filter.js";
-import { ageControl } from "../filter.js";
-import { playerAlreadyExist } from "../filter.js";
+// import { isEmpty } from "../filter.js";
+// import { ageControl } from "../filter.js";
+// import { playerAlreadyExist } from "../filter.js";
 import { nanoid } from "nanoid";
 
 export default {
@@ -147,22 +147,23 @@ export default {
         sexe: this.player.sexe,
 
       };
-      if (!isEmpty(player)) {
-        this.errEmpty = false;
-        if (!ageControl(player)) {
-          this.errAge = false;
-          if (!playerAlreadyExist(player, this.$root.players)) {
-            this.playerAlreadyExist = false;
-            this.$emit("add", player);
-          } else {
-            this.playerAlreadyExist = true;
-          }
-        } else {
-          this.errAge = true;
-        }
-      } else {
-        this.errEmpty = true;
-      }
+      // if (!isEmpty(player)) {
+      //   this.errEmpty = false;
+      //   if (!ageControl(player)) {
+      //     this.errAge = false;
+      //     if (!playerAlreadyExist(player, this.$root.players)) {
+      //       this.playerAlreadyExist = false;
+            
+      //     } else {
+      //       this.playerAlreadyExist = true;
+      //     }
+      //   } else {
+      //     this.errAge = true;
+      //   }
+      // } else {
+      //   this.errEmpty = true;
+      // }
+      this.$emit("add", player);
     },
   },
 };
